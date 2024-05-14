@@ -12,7 +12,7 @@ import AdminPanel from "./adminPanel/AdminPanel";
 import Home from "./inventoryControl/pages/Home";
 import AddItems from "./inventoryControl/pages/AddItems";
 import UpdateItemPage from "./inventoryControl/pages/UpdateItemPage";
-import NotificationPage from './inventoryControl/pages/Notification';
+import NotificationPage from "./inventoryControl/pages/Notification";
 // Supplier Panel
 import AddSup from "./supplierPanel/components/AddSupp";
 import AllSuppliers from "./supplierPanel/components/AllSup";
@@ -31,15 +31,28 @@ import PromotionTable from "./marketingPanel/pages/PromotionTable";
 import Promotionview from "./marketingPanel/pages/PromotionView";
 import Promotionmain from "./marketingPanel/pages/main";
 
+// Parcel traking System
+const test = require("./trackingParcel/parcelRoutes/routes");
+const saveParcelRoute = require("./parcelTraking/parcelRoutes/saveParcelRoute");
+const registerUser = require("./parcelTraking/parcelRoutes/registerUser");
+const loginAdmin = require("./parcelTraking/parcelRoutes/loginAdmmin");
+const adminRoutes = require("./");
+
+// middle ware
+const checkEmailMiddleware = require("./parcelTraking/Middleware/checkEmailMiddleware");
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/AdminPanel" element={<AdminPanel />}/>
+      <Route path="/AdminPanel" element={<AdminPanel />} />
 
       <Route path="/inventoryPanel" element={<Home />} />
       <Route path="/inventoryPanel/addItems" element={<AddItems />} />
       <Route path="/inventoryPanel/item/:id" element={<UpdateItemPage />} />
-      <Route path='/inventoryPanel/notification' element={<NotificationPage />} />
+      <Route
+        path="/inventoryPanel/notification"
+        element={<NotificationPage />}
+      />
 
       <Route path="/supplierPanel" element={<AllSuppliers />} />
       <Route path="/supplierPanel/add" element={<AddSup />} />
@@ -55,7 +68,10 @@ const router = createBrowserRouter(
 
       <Route path="/marketingPanel" element={<Promotionmain />} />
       <Route path="/marketingPanel/promotionmain" element={<Promotion />} />
-      <Route path="/marketingPanel/promotionTable" element={<PromotionTable />} />
+      <Route
+        path="/marketingPanel/promotionTable"
+        element={<PromotionTable />}
+      />
       <Route path="/marketingPanel/promotionview" element={<Promotionview />} />
     </Route>
   )
