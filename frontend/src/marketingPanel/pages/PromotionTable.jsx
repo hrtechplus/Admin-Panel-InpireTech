@@ -23,7 +23,7 @@ export default function Promotion() {
   const fetchPromotions = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/userpromo/getpromotions"
+        "http://localhost:5001/api/userpromo/getpromotions"
       );
       const formattedPromotions = response.data.map((promotion) => ({
         ...promotion,
@@ -155,4 +155,3 @@ export default function Promotion() {
     </ThemeProvider>
   );
 }
-

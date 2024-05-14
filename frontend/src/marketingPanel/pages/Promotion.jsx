@@ -63,7 +63,9 @@ export default function Promotion() {
       }
 
       if (!isStrongPromotionKey(formData.promotionKey)) {
-        toast.error("Promotion Key must be at least 8 characters long and contain letters, numbers, and special characters.");
+        toast.error(
+          "Promotion Key must be at least 8 characters long and contain letters, numbers, and special characters."
+        );
         return;
       }
 
@@ -73,7 +75,9 @@ export default function Promotion() {
       }
 
       if (!isValidPhoneNumber(formData.number)) {
-        toast.error("Please enter a valid phone number with exactly 10 digits.");
+        toast.error(
+          "Please enter a valid phone number with exactly 10 digits."
+        );
         return;
       }
 
@@ -91,7 +95,7 @@ export default function Promotion() {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/api/userpromo/createpromotions",
+        "http://localhost:5001/api/userpromo/createpromotions",
         formData
       );
       console.log("Response:", response.data);
@@ -114,7 +118,8 @@ export default function Promotion() {
   };
 
   const isStrongPromotionKey = (key) => {
-    const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regex =
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return regex.test(key);
   };
 
@@ -141,7 +146,7 @@ export default function Promotion() {
           <Typography component="h1" variant="h5">
             Special Offer Form
           </Typography>
-          
+
           <Paper elevation={3} style={{ padding: 20, marginTop: 20 }}>
             <Box
               component="form"

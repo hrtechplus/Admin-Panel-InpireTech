@@ -49,14 +49,15 @@ function AddSupp() {
         if (validateForm()) {
             const newSupplier = { name, nic, address, mobile,email, wname };
 
-            axios.post('http://localhost:5000/supplier/add', newSupplier)
-                .then(() => {
-                    alert("Successfully added the supplier");
-                    navigate('/');
-                })
-                .catch((err) => {
-                    alert(err);
-                });
+            axios
+              .post("http://localhost:5001/supplier/add", newSupplier)
+              .then(() => {
+                alert("Successfully added the supplier");
+                navigate("/");
+              })
+              .catch((err) => {
+                alert(err);
+              });
         }
     }
 

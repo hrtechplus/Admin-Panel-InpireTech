@@ -16,7 +16,7 @@ function UpdateSupplier() {
     const [errors, setErrors] = useState({}); // State to hold validation errors
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/supplier/get/${nic}`)
+        axios.get(`http://localhost:5001/supplier/get/${nic}`)
             .then((res) => {
                 console.log("Response data:", res.data);
 
@@ -64,7 +64,7 @@ function UpdateSupplier() {
 
         if (Object.keys(validationErrors).length === 0) {
             // If no errors, submit the form
-            axios.put(`http://localhost:5000/supplier/update/${nic}`, values)
+            axios.put(`http://localhost:5001/supplier/update/${nic}`, values)
                 .then((res) => {
                     console.log("Supplier updated successfully:", res.data);
                     navigate('/supplierPanel');

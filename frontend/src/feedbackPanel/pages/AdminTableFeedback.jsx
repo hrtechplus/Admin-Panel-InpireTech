@@ -22,7 +22,7 @@ export default function FeedbackTable() {
     const fetchFeedback = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/user/getfeedback"
+          "http://localhost:5001/api/user/getfeedback"
         );
         setFeedbackList(response.data);
       } catch (error) {
@@ -44,7 +44,6 @@ export default function FeedbackTable() {
           <Typography variant="h4" component="h1" gutterBottom>
             FEEDBACK CORNER
           </Typography>
-         
         </div>
         <Grid container spacing={3}>
           {filteredFeedbackList.map((feedback, index) => (
@@ -67,8 +66,7 @@ export default function FeedbackTable() {
                       />
                     </Typography>
                     <Typography gutterBottom>
-                      Date:{" "}
-                      {new Date(feedback.date).toLocaleDateString()}
+                      Date: {new Date(feedback.date).toLocaleDateString()}
                     </Typography>
                     <Typography>{feedback.description}</Typography>
                   </CardContent>

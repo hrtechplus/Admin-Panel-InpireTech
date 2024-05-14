@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
         function getSuppliers(){
 
-            axios.get('http://localhost:5000/supplier/').then((res)=>{
+            axios.get('http://localhost:5001/supplier/').then((res)=>{
 
                 setSuppliers(res.data)
             }).catch((err)=>{
@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
     const deleteSupplier = (nic) => {
         const isConfirmed = window.confirm("Are you sure you want to delete this supplier?");
         if (isConfirmed) {
-            axios.delete(`http://localhost:5000/supplier/delete/${nic}`)
+            axios.delete(`http://localhost:5001/supplier/delete/${nic}`)
                 .then((res) => {
                     window.location.reload();
                     

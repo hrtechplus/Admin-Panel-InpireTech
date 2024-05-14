@@ -1,0 +1,95 @@
+.body-container {
+  display: grid;
+  height: 90vh;
+  justify-items: center;
+  background-color: #f5f5f5;
+  grid-template-columns: repeat(3, 1fr); /* Update grid-template-columns */
+  grid-template-rows: repeat(3, 1fr); /* Add grid-template-rows */
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.panel-box {
+  background-color: #394bff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.panel-box img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.panel-box .inner-box {
+  padding: 15px;
+}
+
+.panel-box p {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.admin-panel-top-section {
+  font-size: 48px;
+  font-weight: 900;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-panel-heading {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.nav-bar-admin-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-image: linear-gradient(
+    to left,
+    #394bff,
+    #4656ff,
+    #5161ff,
+    #5c6bff,
+    #6775ff
+  );
+  color: #fff;
+}
+
+.inner-box {
+  padding: 15px;
+  background-color: #394bff;
+  border: none;
+  border-radius: 0 0 10px 10px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inner-box:hover {
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.panel-box p {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: #333333;
+}

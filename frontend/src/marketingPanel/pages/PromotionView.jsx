@@ -20,8 +20,8 @@ import Button from "@mui/material/Button";
 import EditPromotionDialog from "./EditTable"; // Correct import
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -80,7 +80,7 @@ export default function Promotion() {
   const fetchPromotions = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/userpromo/getpromotions"
+        "http://localhost:5001/api/userpromo/getpromotions"
       );
       const formattedPromotions = response.data.map((promotion) => ({
         ...promotion,
@@ -96,7 +96,7 @@ export default function Promotion() {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/userpromo/delete/${id}`
+        `http://localhost:5001/api/userpromo/delete/${id}`
       );
       setPromotions(promotions.filter((promotion) => promotion._id !== id));
       setDeleteSuccess(true);
@@ -114,14 +114,14 @@ export default function Promotion() {
   };
 
   const handleEditSuccessClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setEditSuccess(false);
   };
 
   const handleDeleteSuccessClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setDeleteSuccess(false);
@@ -143,33 +143,37 @@ export default function Promotion() {
         animate={{ opacity: 1, y: 0 }} // Animation when component mounts
         transition={{ duration: 1 }} // Animation duration
       >
-        <Typography variant="h4" component="h1" gutterBottom style={{ textAlign: 'center', marginTop: "50px" }}>
-          PROMOTION CORNER 
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+          style={{ textAlign: "center", marginTop: "50px" }}
+        >
+          PROMOTION CORNER
         </Typography>
       </motion.div>
       <TextField
-      
-  placeholder="Search by email"
-  value={searchTerm}
-  onChange={(e) => setSearchTerm(e.target.value)}
-  InputProps={{
-    startAdornment: (
-      <InputAdornment position="start">
-        <SearchIcon />
-      </InputAdornment>
-    ),
-    style: {
-      color:"#387ADF",
-      marginLeft: '70px',
-      marginTop:"50px" // Adjust the value as needed
-    },
-  }}
-/>
+        placeholder="Search by email"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+          style: {
+            color: "#387ADF",
+            marginLeft: "70px",
+            marginTop: "50px", // Adjust the value as needed
+          },
+        }}
+      />
       <Button
         variant="contained"
         color="primary"
         onClick={generatePDF}
-        style={{ float: "right", margin: "50px",marginTop:"50px" }}
+        style={{ float: "right", margin: "50px", marginTop: "50px" }}
       >
         Generate PDF
       </Button>
@@ -178,94 +182,111 @@ export default function Promotion() {
         animate={{ opacity: 1, y: 0 }} // Animation when component mounts
         transition={{ duration: 1 }} // Animation duration
       >
-      <TableContainer
-        id="promotion-table-container"
-        sx={{ mt: "30px" }}
-        component={Paper}
-      >
-        <Table sx={{ minWidth: 750 }} aria-label="promotion table">
-          <TableHead sx={{ bgcolor: "#387ADF" }}>
-            <TableRow>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Promotion Name
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Promotion Key
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Start Date
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                End Date
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                User Email
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Number
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Promotion Type
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Description
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Image
-              </TableCell>
-              <TableCell style={{ width: "10%", fontWeight: "bold" }}>
-                Actions
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredPromotionList.map((promotion) => (
-              <TableRow key={promotion._id}>
-                <TableCell>{promotion.promotionName}</TableCell>
-                <TableCell>{promotion.promotionKey}</TableCell>
-                <TableCell>{promotion.startDate}</TableCell>
-                <TableCell>{promotion.endDate}</TableCell>
-                <TableCell>{promotion.userEmail}</TableCell>
-                <TableCell>{promotion.number}</TableCell>
-                <TableCell>{promotion.promotionType}</TableCell>
-                <TableCell>{promotion.description}</TableCell>
-                <TableCell>
-                  <img src={`data:image/png;base64,${promotion.imageBase64}`} alt="Promotion Image" style={{ width: "100px", height: "auto" }} />
+        <TableContainer
+          id="promotion-table-container"
+          sx={{ mt: "30px" }}
+          component={Paper}
+        >
+          <Table sx={{ minWidth: 750 }} aria-label="promotion table">
+            <TableHead sx={{ bgcolor: "#387ADF" }}>
+              <TableRow>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Promotion Name
                 </TableCell>
-                <TableCell>
-                  <IconButton
-                    aria-label="edit"
-                    onClick={() => handleEdit(promotion)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => handleConfirmDelete(promotion._id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Promotion Key
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Start Date
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  End Date
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  User Email
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Number
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Promotion Type
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Description
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Image
+                </TableCell>
+                <TableCell style={{ width: "10%", fontWeight: "bold" }}>
+                  Actions
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {filteredPromotionList.map((promotion) => (
+                <TableRow key={promotion._id}>
+                  <TableCell>{promotion.promotionName}</TableCell>
+                  <TableCell>{promotion.promotionKey}</TableCell>
+                  <TableCell>{promotion.startDate}</TableCell>
+                  <TableCell>{promotion.endDate}</TableCell>
+                  <TableCell>{promotion.userEmail}</TableCell>
+                  <TableCell>{promotion.number}</TableCell>
+                  <TableCell>{promotion.promotionType}</TableCell>
+                  <TableCell>{promotion.description}</TableCell>
+                  <TableCell>
+                    <img
+                      src={`data:image/png;base64,${promotion.imageBase64}`}
+                      alt="Promotion Image"
+                      style={{ width: "100px", height: "auto" }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <IconButton
+                      aria-label="edit"
+                      onClick={() => handleEdit(promotion)}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => handleConfirmDelete(promotion._id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </motion.div>
-      <Snackbar open={editSuccess} autoHideDuration={6000} onClose={handleEditSuccessClose}>
-        <MuiAlert onClose={handleEditSuccessClose} severity="success" sx={{ width: '100%' }}>
+      <Snackbar
+        open={editSuccess}
+        autoHideDuration={6000}
+        onClose={handleEditSuccessClose}
+      >
+        <MuiAlert
+          onClose={handleEditSuccessClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
           Promotion edited successfully!
         </MuiAlert>
       </Snackbar>
-      <Snackbar open={deleteSuccess} autoHideDuration={6000} onClose={handleDeleteSuccessClose}>
-        <MuiAlert onClose={handleDeleteSuccessClose} severity="success" sx={{ width: '100%' }}>
+      <Snackbar
+        open={deleteSuccess}
+        autoHideDuration={6000}
+        onClose={handleDeleteSuccessClose}
+      >
+        <MuiAlert
+          onClose={handleDeleteSuccessClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
           Promotion deleted successfully!
         </MuiAlert>
       </Snackbar>
-      <Dialog
-        open={deleteConfirmation}
-        onClose={handleCloseDeleteConfirmation}
-      >
+      <Dialog open={deleteConfirmation} onClose={handleCloseDeleteConfirmation}>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -274,14 +295,15 @@ export default function Promotion() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDeleteConfirmation}>Cancel</Button>
-          <Button onClick={() => {
+          <Button
+            onClick={() => {
               handleDelete(deleteId);
               handleCloseDeleteConfirmation();
-            }} 
-            color="secondary">
+            }}
+            color="secondary"
+          >
             Delete
           </Button>
-          
         </DialogActions>
       </Dialog>
       {editPromotion && (
@@ -291,9 +313,6 @@ export default function Promotion() {
           onClose={handleCloseEditDialog}
         />
       )}
-      
     </ThemeProvider>
   );
 }
-
-

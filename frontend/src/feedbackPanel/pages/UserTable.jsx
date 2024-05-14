@@ -19,9 +19,9 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import Rating from "@mui/material/Rating";
 import Chart from "chart.js/auto";
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import Button from '@mui/material/Button';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import Button from "@mui/material/Button";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -36,7 +36,7 @@ export default function FeedbackTable() {
     const fetchFeedback = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/user/getfeedback"
+          "http://localhost:5001/api/user/getfeedback"
         );
         setFeedbackList(response.data);
         renderChart(response.data);
@@ -67,7 +67,7 @@ export default function FeedbackTable() {
   const handleDelete = async (feedbackId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/user/deletefeedback/${feedbackId}`
+        `http://localhost:5001/api/user/deletefeedback/${feedbackId}`
       );
       const updatedList = feedbackList.filter(
         (feedback) => feedback._id !== feedbackId
@@ -179,7 +179,7 @@ export default function FeedbackTable() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <ToastContainer />
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: "center" }}>
         <Typography variant="h4" component="h1" gutterBottom>
           FEEDBACK CONTROL PANEL
         </Typography>

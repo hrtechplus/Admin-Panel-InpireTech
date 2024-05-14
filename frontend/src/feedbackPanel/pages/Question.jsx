@@ -34,7 +34,7 @@ export default function AskQuestion() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/question/submit",
+        "http://localhost:5001/api/question/submit",
         formData
       );
       console.log("Response:", response.data);

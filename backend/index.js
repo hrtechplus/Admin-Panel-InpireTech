@@ -18,13 +18,6 @@ const loginAdmin = require("./trackingParcel/parcelRoutes/loginAdmmin");
 const adminRoutes = require("./trackingParcel/parcelRoutes/adminRoutes");
 const checkEmailMiddleware = require("./trackingParcel/Middleware/checkEmailMiddleware");
 
-//middle ware functions -Tracking Parcel
-
-app.use(test);
-app.use(saveParcelRoute);
-app.use(checkEmailMiddleware, registerUser);
-app.use(loginAdmin);
-app.use(adminRoutes);
 // Middleware section
 app.use(cors());
 app.use(express.json());
@@ -47,6 +40,14 @@ const port = 5001;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+//middle ware functions -Tracking Parcel
+
+app.use(test);
+app.use(saveParcelRoute);
+app.use(checkEmailMiddleware, registerUser);
+app.use(loginAdmin);
+app.use(adminRoutes);
 
 // All the routes
 app.use("/inventoryPanel", inventoryRoutes); // For all the Inventory Control Panel routes

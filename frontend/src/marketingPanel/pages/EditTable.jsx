@@ -22,7 +22,7 @@ const EditPromotionDialog = ({ promotion, onSave, onClose }) => {
   const handleSave = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/userpromo/updatepromotion/${promotion._id}`,
+        `http://localhost:5001/api/userpromo/updatepromotion/${promotion._id}`,
         editedPromotion
       );
       onSave(response.data.data);
