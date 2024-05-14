@@ -31,15 +31,7 @@ import PromotionTable from "./marketingPanel/pages/PromotionTable";
 import Promotionview from "./marketingPanel/pages/PromotionView";
 import Promotionmain from "./marketingPanel/pages/main";
 
-// Parcel traking System
-const test = require("./trackingParcel/parcelRoutes/routes");
-const saveParcelRoute = require("./parcelTraking/parcelRoutes/saveParcelRoute");
-const registerUser = require("./parcelTraking/parcelRoutes/registerUser");
-const loginAdmin = require("./parcelTraking/parcelRoutes/loginAdmmin");
-const adminRoutes = require("./");
-
-// middle ware
-const checkEmailMiddleware = require("./parcelTraking/Middleware/checkEmailMiddleware");
+// Tracking Parcel
 
 const router = createBrowserRouter(
   createRoutesFromElements(
