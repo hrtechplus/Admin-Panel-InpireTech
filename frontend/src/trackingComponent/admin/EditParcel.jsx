@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "../css/style.css";
 import SideNavigation from "./Component/SideNavigation";
-import emailjs from "emailjs-com";
+
 import {
   Badge,
   Grid,

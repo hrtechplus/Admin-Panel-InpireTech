@@ -9,7 +9,7 @@ import {
 // Admin Panel
 import AdminPanel from "./adminPanel/AdminPanel";
 // Inventory Panel
-import Home from "./inventoryControl/pages/Home";
+import HomeA from "./inventoryControl/pages/Home";
 import AddItems from "./inventoryControl/pages/AddItems";
 import UpdateItemPage from "./inventoryControl/pages/UpdateItemPage";
 import NotificationPage from "./inventoryControl/pages/Notification";
@@ -32,13 +32,24 @@ import Promotionview from "./marketingPanel/pages/PromotionView";
 import Promotionmain from "./marketingPanel/pages/main";
 
 // Tracking Parcel
+import AdminLogin from "./trackingComponent/admin/AdminLogin";
+import UserRegister from "./trackingComponent/user/Register";
+import AdminDashBoard from "./trackingComponent/admin/AdminMain";
+import Admin_DashBoard from "./trackingComponent/admin/DashBoard";
+import TrackingPage from "./trackingComponent/user/ParcelForm";
+import Home from "./trackingComponent/Common/Home";
+import EditParcel from "./trackingComponent/admin/EditParcel";
+import HowToUse from "./trackingComponent/admin/Component/HowToUse";
+import HandelAuth from "./trackingComponent/Common/auth/HandleAuth";
+import DashboardReport from "./trackingComponent/admin/DashboardReport";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/AdminPanel" element={<AdminPanel />} />
 
-      <Route path="/inventoryPanel" element={<Home />} />
+      <Route path="/inventoryPanel" element={<HomeA />} />
       <Route path="/inventoryPanel/addItems" element={<AddItems />} />
       <Route path="/inventoryPanel/item/:id" element={<UpdateItemPage />} />
       <Route
@@ -65,6 +76,19 @@ const router = createBrowserRouter(
         element={<PromotionTable />}
       />
       <Route path="/marketingPanel/promotionview" element={<Promotionview />} />
+
+      {/* Tracking Routes  */}
+      <Route path="/" element={<TrackingPage />} />
+      <Route path="/login" element={<AdminLogin />} />
+      <Route path="/report" element={<DashboardReport />} />
+
+      <Route path="/register" element={<UserRegister />} />
+      <Route path="/parcel" element={<TrackingPage />} />
+      <Route element={<HandelAuth />}>
+        <Route path="/edit" element={<EditParcel />} />
+      </Route>
+      <Route path="/test" element={<AdminDashBoard />} />
+      <Route path="/howto" element={<HowToUse />} />
     </Route>
   )
 );

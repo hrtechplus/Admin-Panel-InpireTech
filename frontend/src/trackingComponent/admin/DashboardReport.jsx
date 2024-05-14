@@ -27,12 +27,9 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { saveAs } from "file-saver";
+
 import SideNavigation from "./Component/SideNavigation";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
-import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
-import { BarChart } from "@mui/x-charts/BarChart";
-import { useReactToPrint } from "react-to-print";
 
 const DashboardReport = () => {
   const [parcels, setParcels] = useState([]);
