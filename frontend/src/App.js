@@ -80,15 +80,20 @@ const router = createBrowserRouter(
       {/* Tracking Routes  */}
       <Route path="/" element={<TrackingPage />} />
       <Route path="/login" element={<AdminLogin />} />
-      <Route path="/report" element={<DashboardReport />} />
+      <Route element={<HandelAuth />}>
+        <Route path="/report" element={<DashboardReport />} />
+      </Route>
 
       <Route path="/register" element={<UserRegister />} />
       <Route path="/parcel" element={<TrackingPage />} />
       <Route element={<HandelAuth />}>
         <Route path="/edit" element={<EditParcel />} />
       </Route>
+      <Route element={<HandelAuth />}>
+        <Route path="/howto" element={<HowToUse />} />
+      </Route>
+      <Route path="/report" element={<DashboardReport />} />
       <Route path="/test" element={<AdminDashBoard />} />
-      <Route path="/howto" element={<HowToUse />} />
     </Route>
   )
 );
